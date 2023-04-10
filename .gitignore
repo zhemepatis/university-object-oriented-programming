@@ -1,0 +1,11 @@
+# directories to be ignored
+out/
+shelf/
+ex1/.idea/inspectionProfiles
+
+# files to be ignored
+*.xml
+
+#  exceptions
+!misc.xml
+!modules.xml
