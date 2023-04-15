@@ -26,7 +26,7 @@ public class Playground extends JPanel implements Runnable {
     final int LEVEL_RUNNING = 2;
     public final int WORLD_CONSTRUCTOR = 3;
     public final int GAME_END = 4;
-    public int gameState = 3;
+    public int gameState = 2;
 
     public int artifactCount = 0;
 
