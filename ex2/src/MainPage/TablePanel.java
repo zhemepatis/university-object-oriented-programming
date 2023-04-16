@@ -24,6 +24,6 @@ public class TablePanel extends MainPage {
         };
 
         this.table = new JTable(data, columnNames);
-        panel.add(table, BorderLayout.CENTER);
+//        super.add(table);
     }
 }

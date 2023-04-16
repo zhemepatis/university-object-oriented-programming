@@ -1,59 +1,56 @@
 package Forms;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
+import MainPage.MainPage;
+import MainPage.TablePanel;
 
-public class LoanForm extends Form {
-    FormItem loanSum;
-    FormItem loanTerm;
-    FormItem repaymentSchedule;
-    FormItem annualRate;
-    JButton submitButton;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LoanForm extends MainPage implements ActionListener {
+    private FormItem loanSum;
+    private FormItem loanTerm;
+    private FormItem repaymentSchedule;
+    private FormItem annualRate;
+    private JButton submitButton;
 
     public LoanForm() {
-        super();
-        panel.setLayout(null);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBorder(new EmptyBorder(new Insets(40, 180, 40, 180)));
 
         // loan sum
-        loanSum = new FormItem("Loan sum", 10, 20);
+        loanSum = new FormItem("Loan sum");
         loanSum.addTextField();
-
-        panel.add(loanSum.label);
-        panel.add(loanSum.field);
+        add(loanSum);
 
         // loan term
-        loanTerm = new FormItem("Loan term", 10, 60);
+        loanTerm = new FormItem("Loan term");
         loanTerm.addTextField();
         String[] termUnits = {"years", "months"};
         loanTerm.addComboBox(termUnits);
-
-        panel.add(loanTerm.label);
-        panel.add(loanTerm.field);
-        panel.add(loanTerm.box);
+        add(loanTerm);
 
         // loan repayment schedule
-        repaymentSchedule = new FormItem("Repayment schedule", 10, 100);
+        repaymentSchedule = new FormItem("Repayment schedule");
         String[] scheduleTypes = {"Annuity", "Linear"};
         repaymentSchedule.addComboBox(scheduleTypes);
-
-        panel.add(repaymentSchedule.label);
-        panel.add(repaymentSchedule.box);
+        add(repaymentSchedule);
 
         // annual percentage rate
-        annualRate = new FormItem("Annual rate (%)", 10, 140);
+        annualRate = new FormItem("Annual rate (%)");
         annualRate.addTextField();
-
-        panel.add(annualRate.label);
-        panel.add(annualRate.field);
+        add(annualRate);
 
         submitButton = new JButton("Submit");
         submitButton.setBounds(10, 180, 85, 20);
         submitButton.addActionListener(this);
-        panel.add(submitButton);
+        add(submitButton, BorderLayout.NORTH);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        super.showTableView();
     }
 }

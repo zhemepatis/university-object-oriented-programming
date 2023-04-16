@@ -2,36 +2,19 @@ package MainPage;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MainPage {
-    public JPanel panel;
-    JMenuBar menuBar;
-
+public class MainPage extends JPanel{
     public MainPage() {
-        panel = new JPanel();
-        panel.setPreferredSize(new Dimension(Window.WIDTH, Window.HEIGHT));
-        panel.setLayout(new BorderLayout());
-        panel.setBackground(Color.green);
+        setLayout(new BorderLayout());
+    }
 
-        menuBar = new JMenuBar();
+    public void showTableView() {
+        System.out.println("Showing table view");
+    }
 
-        // loan menu
-        JMenu loanMenu = new JMenu("Loan");
-        JMenuItem postItem = new JMenuItem("Postpone");
-
-        loanMenu.add(postItem);
-        menuBar.add(loanMenu);
-
-        // table menu
-        JMenu tableMenu = new JMenu("Table");
-        JMenuItem toCsvItem = new JMenuItem("Export to .csv file");
-
-        JMenuItem toXlsxItem = new JMenuItem("Export to .xlsx file");
-        tableMenu.add(toXlsxItem);
-        tableMenu.add(toCsvItem);
-        menuBar.add(tableMenu);
-
-        // adding menu bar to the menu panel
-        panel.add(menuBar, BorderLayout.NORTH);
+    public void showGraphView() {
+        System.out.println("Showing graph view");
     }
 }

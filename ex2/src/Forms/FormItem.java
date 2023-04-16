@@ -1,9 +1,10 @@
 package Forms;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class FormItem {
+public class FormItem extends JPanel {
     final int MARGIN = 5;
 
     final int LABEL_WIDTH = 180;
@@ -13,33 +14,44 @@ public class FormItem {
     final int BOX_WIDTH = 80;
     final int BOX_HEIGHT = 25;
 
-    int width;
-    int x, y;
+    JPanel labelPanel;
+    JPanel fieldPanel;
+    JPanel boxPanel;
 
     JLabel label;
     JTextField field;
     JComboBox box;
 
-    public FormItem(String label, int x, int y) {
-        this.label = new JLabel(label);
-        this.x = x;
-        this.y = y;
-        this.label.setBounds(this.x, this.y, LABEL_WIDTH, LABEL_HEIGHT);
+    public FormItem(String label) {
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setBorder(new EmptyBorder(new Insets(MARGIN, MARGIN, MARGIN, MARGIN)));
 
-        width = LABEL_WIDTH + MARGIN;
+        labelPanel = new JPanel(new FlowLayout());
+        labelPanel.setBorder(new EmptyBorder(new Insets(MARGIN, MARGIN, MARGIN, MARGIN)));
+
+        this.label = new JLabel(label);
+        labelPanel.add(this.label, BorderLayout.NORTH);
+
+        add(labelPanel);
     }
 
     public void addTextField() {
-        field = new JTextField();
-        field.setBounds(width, y, FIELD_WIDTH, FIELD_HEIGHT);
+        fieldPanel = new JPanel(new BorderLayout());
+        fieldPanel.setBorder(new EmptyBorder(new Insets(MARGIN, MARGIN, MARGIN, MARGIN)));
 
-        width += LABEL_WIDTH + MARGIN;
+        field = new JTextField();
+        fieldPanel.add(field, BorderLayout.NORTH);
+
+        add(fieldPanel);
     }
 
     public void addComboBox(String[] items) {
-        box = new JComboBox(items);
-        box.setBounds(width, y, BOX_WIDTH, BOX_HEIGHT);
+        boxPanel = new JPanel(new BorderLayout());
+        boxPanel.setBorder(new EmptyBorder(new Insets(MARGIN, MARGIN, MARGIN, MARGIN)));
 
-        width += BOX_WIDTH + MARGIN;
+        box = new JComboBox(items);
+        boxPanel.add(box, BorderLayout.NORTH);
+
+        add(boxPanel);
     }
 }

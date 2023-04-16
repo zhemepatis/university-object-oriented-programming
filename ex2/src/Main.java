@@ -1,9 +1,8 @@
-import Forms.FormItem;
 import Forms.LoanForm;
-import Forms.PostponementForm;
-import MainPage.TablePanel;
+import MainPage.MainPage;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,15 +14,19 @@ public class Main {
         window.setLocationRelativeTo(null);
 
         // --- PANELS ---
-//        JPanel loanPanel = new LoanForm().panel;
-//        window.add(loanPanel);
+        MainPage mainPanel = new MainPage();
 
-//        JPanel postponementPanel = new PostponementForm().panel;
-//        window.add(postponementPanel);
+        Menu menu = new Menu(mainPanel);
+        mainPanel.add(menu, BorderLayout.NORTH);
 
-        JPanel tablePage = new TablePanel(10, 20).panel;
-        window.add(tablePage);
+        LoanForm loanPanel = new LoanForm();
+        mainPanel.add(loanPanel);
 
+        mainPanel.add(new JPanel(), BorderLayout.WEST);
+        mainPanel.add(new JPanel(), BorderLayout.EAST);
+        mainPanel.add(new JPanel(), BorderLayout.SOUTH);
+
+        window.add(mainPanel);
         window.setVisible(true);
     }
 }
