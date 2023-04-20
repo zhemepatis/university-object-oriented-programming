@@ -1,9 +1,10 @@
-package page;
+package loan;
 
 public class Loan {
+    final String[] MONTHS = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
     private double sum;
     private int term;
-    private int termUnits;
     private int repaymentSchedule;
     private double annualRate;
 
@@ -11,9 +12,8 @@ public class Loan {
         this.sum = sum;
     }
 
-    public void setTerm(int term, int termUnits) {
+    public void setTerm(int term) {
         this.term = term;
-        this.termUnits = termUnits;
     }
 
     public void setRepaymentSchedule(int repaymentSchedule) {
@@ -30,10 +30,6 @@ public class Loan {
 
     public int getTerm() {
         return term;
-    }
-
-    public int getTermUnits() {
-        return termUnits;
     }
 
     public int getRepaymentSchedule() {

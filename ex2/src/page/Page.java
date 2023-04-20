@@ -1,16 +1,21 @@
 package page;
 
+import main.WindowManager;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Page extends JFrame {
+    WindowManager wm;
     CustomMenu menu;
 
     JPanel mainPanel;
     JPanel contentPanel;
     SpringLayout contentPanelLayout;
 
-    public Page() {
+    public Page(WindowManager wm) {
+        this.wm = wm;
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
@@ -21,7 +26,7 @@ public class Page extends JFrame {
         contentPanelLayout = new SpringLayout();
         contentPanel.setLayout(contentPanelLayout);
 
-        menu = new CustomMenu();
+        menu = new CustomMenu(this.wm);
         mainPanel.add(menu, BorderLayout.NORTH);
 
         add(mainPanel);

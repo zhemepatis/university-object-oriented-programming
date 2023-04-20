@@ -1,5 +1,7 @@
 package page;
 
+import loan.AnnuityRepaymentSchedule;
+import loan.Loan;
 import main.WindowManager;
 
 import javax.swing.*;
@@ -8,13 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoanFormPage extends Page implements ActionListener {
-    WindowManager wm;
     Loan loan;
 
-    private final JLabel loanSumLabel;
-    private final JLabel loanTermLabel;
-    private final JLabel repaymentScheduleLabel;
-    private final JLabel annualRateLabel;
+    private JLabel loanSumLabel;
+    private JLabel loanTermLabel;
+    private JLabel repaymentScheduleLabel;
+    private JLabel annualRateLabel;
     private JTextField loanSumField;
     private JTextField loanTermField;
     private JTextField annualRateField;
@@ -23,14 +24,13 @@ public class LoanFormPage extends Page implements ActionListener {
     private JButton submitButton;
 
     public LoanFormPage(WindowManager wm, Loan loan) {
-        super();
+        super(wm);
 
-        this.wm = wm;
         this.loan = loan;
 
-        loanSumLabel = new JLabel("page.Loan sum");
+        loanSumLabel = new JLabel("Loan sum");
         loanSumLabel.setPreferredSize(new Dimension(200, 15));
-        loanSumField = new JTextField(5);
+        loanSumField = new JTextField(7);
         contentPanelLayout.putConstraint(SpringLayout.WEST, loanSumLabel, 10, SpringLayout.WEST, contentPanel);
         contentPanelLayout.putConstraint(SpringLayout.NORTH, loanSumLabel, 10, SpringLayout.NORTH, contentPanel);
         contentPanelLayout.putConstraint(SpringLayout.WEST, loanSumField, 20, SpringLayout.EAST, loanSumLabel);
@@ -38,9 +38,9 @@ public class LoanFormPage extends Page implements ActionListener {
         contentPanel.add(loanSumLabel);
         contentPanel.add(loanSumField);
 
-        loanTermLabel = new JLabel("page.Loan term");
+        loanTermLabel = new JLabel("Loan term");
         loanTermLabel.setPreferredSize(new Dimension(200, 15));
-        loanTermField = new JTextField(5);
+        loanTermField = new JTextField(7);
         String[] termUnits = {"years", "months"};
         loanTermBox = new JComboBox(termUnits);
         loanTermBox.setPreferredSize(new Dimension(80, 20));
@@ -54,7 +54,7 @@ public class LoanFormPage extends Page implements ActionListener {
         contentPanel.add(loanTermField);
         contentPanel.add(loanTermBox);
 
-        repaymentScheduleLabel = new JLabel("page.Loan repayment schedule");
+        repaymentScheduleLabel = new JLabel("Loan repayment schedule");
         repaymentScheduleLabel.setPreferredSize(new Dimension(200, 15));
         String[] scheduleTypes = {"annuity", "linear"};
         repaymentScheduleBox = new JComboBox(scheduleTypes);
@@ -68,7 +68,7 @@ public class LoanFormPage extends Page implements ActionListener {
 
         annualRateLabel = new JLabel("Annual percentage rate (%)");
         annualRateLabel.setPreferredSize(new Dimension(200, 15));
-        annualRateField = new JTextField(5);
+        annualRateField = new JTextField(7);
         contentPanelLayout.putConstraint(SpringLayout.WEST, annualRateLabel, 10, SpringLayout.WEST, contentPanel);
         contentPanelLayout.putConstraint(SpringLayout.NORTH, annualRateLabel, 130, SpringLayout.NORTH, contentPanel);
         contentPanelLayout.putConstraint(SpringLayout.WEST, annualRateField, 20, SpringLayout.EAST, annualRateLabel);
@@ -78,7 +78,7 @@ public class LoanFormPage extends Page implements ActionListener {
 
         submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(85, 20));
-        contentPanelLayout.putConstraint(SpringLayout.WEST, submitButton, 200, SpringLayout.WEST, contentPanel);
+        contentPanelLayout.putConstraint(SpringLayout.WEST, submitButton, 100, SpringLayout.WEST, contentPanel);
         contentPanelLayout.putConstraint(SpringLayout.NORTH, submitButton, 170, SpringLayout.NORTH, contentPanel);
         contentPanel.add(submitButton);
         submitButton.addActionListener(this);
@@ -89,8 +89,13 @@ public class LoanFormPage extends Page implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         loan.setSum(Double.parseDouble(loanSumField.getText()));
-        loan.setTerm(Integer.parseInt(loanTermField.getText()), loanTermBox.getSelectedIndex());
+        int termInMonths = (loanTermBox.getSelectedIndex() == 0) ? Integer.parseInt(loanTermField.getText())*12 : Integer.parseInt(loanTermField.getText());
+        loan.setTerm(termInMonths);
         loan.setRepaymentSchedule(repaymentScheduleBox.getSelectedIndex());
-        loan.setAnnualRate(Double.parseDouble(annualRateField.getText()));
+        loan.setAnnualRate(Double.parseDouble(annualRateField.getText())/100);
+
+        AnnuityRepaymentSchedule schedule = new AnnuityRepaymentSchedule(loan);
+
+        wm.showTableView();
     }
 }
