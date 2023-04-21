@@ -7,16 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CustomMenu extends JMenuBar implements ActionListener {
-    WindowManager wm;
+    private static WindowManager wm;
 
-    JMenu loanMenu;
-    JMenu tableMenu;
+    private static JMenu loanMenu;
+    private static JMenu viewMenu;
 
-    JMenuItem registerItem;
-    JMenuItem postItem;
-    JMenuItem showTableItem;
-    JMenuItem toCsvItem;
-    JMenuItem toXlsxItem;
+    private static JMenuItem postItem;
+    private static JMenuItem showTableItem;
+    private static JMenuItem showChartItem;
 
     public CustomMenu(WindowManager wm) {
         this.wm = wm;
@@ -24,29 +22,27 @@ public class CustomMenu extends JMenuBar implements ActionListener {
         // loan menu
         loanMenu = new JMenu("Loan");
 
-        registerItem = new JMenuItem("Register");
-        registerItem.addActionListener(this);
         postItem = new JMenuItem("Postpone");
         postItem.addActionListener(this);
+        disablePostItem();
 
-        loanMenu.add(registerItem);
         loanMenu.add(postItem);
         add(loanMenu);
 
-        // table menu
-        tableMenu = new JMenu("Table");
+        // view menu
+        viewMenu = new JMenu("View");
 
-        showTableItem = new JMenuItem("Show table");
+        showTableItem = new JMenuItem("Show Table View");
         showTableItem.addActionListener(this);
-        toCsvItem = new JMenuItem("Export to .csv file");
-        toCsvItem.addActionListener(this);
-        toXlsxItem = new JMenuItem("Export to .xlsx file");
-        toXlsxItem.addActionListener(this);
+        disableShowTableItem();
 
-        tableMenu.add(showTableItem);
-        tableMenu.add(toXlsxItem);
-        tableMenu.add(toCsvItem);
-        add(tableMenu);
+        showChartItem = new JMenuItem("Show Chart View");
+        showChartItem.addActionListener(this);
+        disableShowChartItem();
+
+        viewMenu.add(showTableItem);
+        viewMenu.add(showChartItem);
+        add(viewMenu);
     }
 
 
@@ -55,17 +51,33 @@ public class CustomMenu extends JMenuBar implements ActionListener {
         if(e.getSource() == showTableItem) {
             wm.showTableView();
         }
-        else if(e.getSource() == registerItem) {
-            wm.showLoanForm();
-        }
         else if(e.getSource() == postItem) {
 
         }
-        else if(e.getSource() == toCsvItem) {
+    }
 
-        }
-        else if(e.getSource() == toXlsxItem) {
+    public void disablePostItem() {
+        postItem.setEnabled(false);
+    }
 
-        }
+    public void disableShowTableItem() {
+        showTableItem.setEnabled(false);
+    }
+
+    public void disableShowChartItem() {
+        showChartItem.setEnabled(false);
+    }
+
+
+    public void enablePostItem() {
+        postItem.setEnabled(true);
+    }
+
+    public void enableShowTableItem() {
+        showTableItem.setEnabled(true);
+    }
+
+    public void enableShowChartItem() {
+        showChartItem.setEnabled(true);
     }
 }

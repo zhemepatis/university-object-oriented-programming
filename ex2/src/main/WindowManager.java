@@ -35,6 +35,9 @@ public class WindowManager {
     }
 
     public void showTableView() {
+        tv.menu.enableShowChartItem();
+        tv.menu.disableShowTableItem();
+
         lf.setVisible(false);
         tv.setVisible(true);
     }

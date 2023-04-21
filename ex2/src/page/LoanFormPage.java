@@ -109,6 +109,7 @@ public class LoanFormPage extends Page implements ActionListener {
         else
             wm.tv.createTable(loan, wm.lSchedule);
 
+        wm.tv.menu.enablePostItem();
         wm.showTableView();
     }
 }

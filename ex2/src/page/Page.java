@@ -10,7 +10,7 @@ public class Page extends JFrame {
     final int HEIGHT = 500;
 
     WindowManager wm;
-    CustomMenu menu;
+    public CustomMenu menu;
 
     JPanel mainPanel;
     JPanel contentPanel;
