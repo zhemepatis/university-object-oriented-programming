@@ -1,8 +1,6 @@
 package loan;
 
 public class Loan {
-    final String[] MONTHS = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-
     private double sum;
     private int term;
     private int repaymentSchedule;

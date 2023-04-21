@@ -15,6 +15,7 @@ public class CustomMenu extends JMenuBar implements ActionListener {
     private static JMenuItem postItem;
     private static JMenuItem showTableItem;
     private static JMenuItem showChartItem;
+    private static JMenuItem exportItem;
 
     public CustomMenu(WindowManager wm) {
         this.wm = wm;
@@ -40,20 +41,15 @@ public class CustomMenu extends JMenuBar implements ActionListener {
         showChartItem.addActionListener(this);
         disableShowChartItem();
 
+        exportItem = new JMenuItem("Export Payment Schedule");
+        exportItem.addActionListener(this);
+        disableExportItem();
+
         viewMenu.add(showTableItem);
         viewMenu.add(showChartItem);
+        viewMenu.add(exportItem);
+
         add(viewMenu);
-    }
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == showTableItem) {
-            wm.showTableView();
-        }
-        else if(e.getSource() == postItem) {
-
-        }
     }
 
     public void disablePostItem() {
@@ -68,6 +64,9 @@ public class CustomMenu extends JMenuBar implements ActionListener {
         showChartItem.setEnabled(false);
     }
 
+    public void disableExportItem() {
+        exportItem.setEnabled(false);
+    }
 
     public void enablePostItem() {
         postItem.setEnabled(true);
@@ -79,5 +78,22 @@ public class CustomMenu extends JMenuBar implements ActionListener {
 
     public void enableShowChartItem() {
         showChartItem.setEnabled(true);
+    }
+
+    public void enableExportItem() {
+        exportItem.setEnabled(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == postItem) {
+            wm.showPostForm();
+        }
+        else if(e.getSource() == showTableItem) {
+            wm.showTableView();
+        }
+        else if(e.getSource() == showChartItem) {
+            wm.showChartView();
+        }
     }
 }

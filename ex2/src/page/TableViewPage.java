@@ -12,15 +12,14 @@ import java.awt.*;
 public class TableViewPage extends Page {
     int COLUMN_NUM = 5;
     int ROW_NUM;
+
+    JTable table;
+
     final String[] COLUMN_NAMES = {"Month", "Balance", "Monthly pay", "Interest", "Credit"};
     String[][] data;
 
-    WindowManager wm;
-    JTable table;
-
     public TableViewPage(WindowManager wm) {
         super(wm);
-        this.wm = wm;
     }
 
     public void createTable(Loan loan, AnnuityRepaymentSchedule schedule) {
@@ -49,7 +48,7 @@ public class TableViewPage extends Page {
         data = new String[ROW_NUM][COLUMN_NUM];
 
         for(int i = 0; i < ROW_NUM; ++i) {
-            data[i][0] = (i/12+1) + " year, " + (i%12+1);
+            data[i][0] = (i/12+1) + " year, " + (i%12+1) + " month";
             data[i][1] = String.valueOf(schedule.getBalance(i));
             data[i][2] = String.valueOf(schedule.getMonthlyPay());
             data[i][3] = String.valueOf(schedule.getInterest(i));
@@ -61,7 +60,7 @@ public class TableViewPage extends Page {
         data = new String[ROW_NUM][COLUMN_NUM];
 
         for(int i = 0; i < ROW_NUM; ++i) {
-            data[i][0] = (i/12+1) + " year, " + (i%12+1);
+            data[i][0] = (i/12+1) + " year, " + (i%12+1) + " month";
             data[i][1] = String.valueOf(schedule.getBalance(i));
             data[i][2] = String.valueOf(schedule.getMonthlyPay(i));
             data[i][3] = String.valueOf(schedule.getInterest(i));
