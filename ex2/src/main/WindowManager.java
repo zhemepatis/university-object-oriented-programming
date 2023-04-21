@@ -1,13 +1,19 @@
 package main;
 
+import loan.AnnuityRepaymentSchedule;
+import loan.LinearRepaymentSchedule;
 import loan.Loan;
+import loan.RepaymentSchedule;
 import page.LoanFormPage;
 import page.TableViewPage;
 
 public class WindowManager {
-    LoanFormPage lf;
-    TableViewPage tv;
+    public LoanFormPage lf;
+    public TableViewPage tv;
+
     Loan loan;
+    public AnnuityRepaymentSchedule aSchedule;
+    public LinearRepaymentSchedule lSchedule;
 
     public WindowManager() {
         loan = new Loan();

@@ -8,4 +8,5 @@ public abstract class RepaymentSchedule {
     }
 
     public abstract void createRepaymentSchedule();
+    public abstract void postponeRepayment();
 }

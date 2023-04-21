@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Page extends JFrame {
+    final int WIDTH = 700;
+    final int HEIGHT = 500;
+
     WindowManager wm;
     CustomMenu menu;
 
@@ -17,7 +20,7 @@ public class Page extends JFrame {
         this.wm = wm;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(700, 500);
+        setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
 
         mainPanel = new JPanel(new BorderLayout());

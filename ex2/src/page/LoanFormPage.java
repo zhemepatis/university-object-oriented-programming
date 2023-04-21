@@ -1,6 +1,7 @@
 package page;
 
 import loan.AnnuityRepaymentSchedule;
+import loan.LinearRepaymentSchedule;
 import loan.Loan;
 import main.WindowManager;
 
@@ -25,9 +26,9 @@ public class LoanFormPage extends Page implements ActionListener {
 
     public LoanFormPage(WindowManager wm, Loan loan) {
         super(wm);
-
         this.loan = loan;
 
+        // loan sum
         loanSumLabel = new JLabel("Loan sum");
         loanSumLabel.setPreferredSize(new Dimension(200, 15));
         loanSumField = new JTextField(7);
@@ -38,6 +39,7 @@ public class LoanFormPage extends Page implements ActionListener {
         contentPanel.add(loanSumLabel);
         contentPanel.add(loanSumField);
 
+        // loan term
         loanTermLabel = new JLabel("Loan term");
         loanTermLabel.setPreferredSize(new Dimension(200, 15));
         loanTermField = new JTextField(7);
@@ -54,6 +56,7 @@ public class LoanFormPage extends Page implements ActionListener {
         contentPanel.add(loanTermField);
         contentPanel.add(loanTermBox);
 
+        // repayment schedule
         repaymentScheduleLabel = new JLabel("Loan repayment schedule");
         repaymentScheduleLabel.setPreferredSize(new Dimension(200, 15));
         String[] scheduleTypes = {"annuity", "linear"};
@@ -66,6 +69,7 @@ public class LoanFormPage extends Page implements ActionListener {
         contentPanel.add(repaymentScheduleLabel);
         contentPanel.add(repaymentScheduleBox);
 
+        // annual rate
         annualRateLabel = new JLabel("Annual percentage rate (%)");
         annualRateLabel.setPreferredSize(new Dimension(200, 15));
         annualRateField = new JTextField(7);
@@ -76,6 +80,7 @@ public class LoanFormPage extends Page implements ActionListener {
         contentPanel.add(annualRateLabel);
         contentPanel.add(annualRateField);
 
+        // submit button
         submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(85, 20));
         contentPanelLayout.putConstraint(SpringLayout.WEST, submitButton, 100, SpringLayout.WEST, contentPanel);
@@ -94,7 +99,15 @@ public class LoanFormPage extends Page implements ActionListener {
         loan.setRepaymentSchedule(repaymentScheduleBox.getSelectedIndex());
         loan.setAnnualRate(Double.parseDouble(annualRateField.getText())/100);
 
-        AnnuityRepaymentSchedule schedule = new AnnuityRepaymentSchedule(loan);
+        wm.aSchedule = new AnnuityRepaymentSchedule(loan);
+        wm.aSchedule.createRepaymentSchedule();
+        wm.lSchedule = new LinearRepaymentSchedule(loan);
+        wm.lSchedule.createRepaymentSchedule();
+
+        if(repaymentScheduleBox.getSelectedIndex() == 0)
+            wm.tv.createTable(loan, wm.aSchedule);
+        else
+            wm.tv.createTable(loan, wm.lSchedule);
 
         wm.showTableView();
     }
