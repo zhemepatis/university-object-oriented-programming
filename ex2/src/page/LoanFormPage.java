@@ -105,9 +105,9 @@ public class LoanFormPage extends Page implements ActionListener {
         wm.lSchedule.createRepaymentSchedule();
 
         if(repaymentScheduleBox.getSelectedIndex() == 0)
-            wm.tv.createTable(loan, wm.aSchedule);
+            wm.tv.fillTable(loan, wm.aSchedule);
         else
-            wm.tv.createTable(loan, wm.lSchedule);
+            wm.tv.fillTable(loan, wm.lSchedule);
 
         wm.tv.menu.enablePostItem();
         wm.showTableView();
