@@ -94,7 +94,7 @@ public class PostFormPage extends Page implements ActionListener {
         else
             wm.tv.updateTable(loan, wm.lSchedule);
 
-        wm.tv.menu.disablePostItem();
+        setVisible(false);
         wm.showTableView();
     }
 }

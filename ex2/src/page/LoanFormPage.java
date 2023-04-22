@@ -109,6 +109,7 @@ public class LoanFormPage extends Page implements ActionListener {
         else
             wm.tv.fillTable(loan, wm.lSchedule);
 
+        setVisible(false);
         wm.tv.menu.enablePostItem();
         wm.showTableView();
     }

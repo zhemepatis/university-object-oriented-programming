@@ -13,7 +13,7 @@ public class WindowManager {
     public PostFormPage pf;
     public TableViewPage tv;
 
-    Loan loan;
+    public Loan loan;
     public AnnuityRepaymentSchedule aSchedule;
     public LinearRepaymentSchedule lSchedule;
 
@@ -47,7 +47,6 @@ public class WindowManager {
         tv.menu.enableShowChartItem();
         tv.menu.disableShowTableItem();
 
-        lf.setVisible(false);
         tv.setVisible(true);
     }
 
@@ -55,6 +54,5 @@ public class WindowManager {
         tv.menu.enableExportItem();
         tv.menu.enableShowTableItem();
         tv.menu.disableShowChartItem();
-
     }
 }

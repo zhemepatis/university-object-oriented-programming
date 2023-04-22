@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CustomMenu extends JMenuBar implements ActionListener {
-    private static WindowManager wm;
+    private WindowManager wm;
 
     private static JMenu loanMenu;
     private static JMenu viewMenu;
@@ -94,6 +94,14 @@ public class CustomMenu extends JMenuBar implements ActionListener {
         }
         else if(e.getSource() == showChartItem) {
             wm.showChartView();
+        }
+        else if(e.getSource() == exportItem) {
+            if(wm.loan.getRepaymentSchedule() == 0) {
+                wm.aSchedule.exportToFile();
+            }
+            else {
+                wm.lSchedule.exportToFile();
+            }
         }
     }
 }
