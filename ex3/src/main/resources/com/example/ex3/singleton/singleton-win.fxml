@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="271.0" prefWidth="535.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ex3.controllers.singleton.SingletonWin">
+    <children>
+        <Label layoutX="35.0" layoutY="118.0" text="Mug details:" />
+        <Label fx:id="detailsLabel" layoutX="118.0" layoutY="118.0" />
+        <Button layoutX="219.0" layoutY="197.0" mnemonicParsing="false" onAction="#showDetails" text="Show Details" />
+    </children>
+</AnchorPane>

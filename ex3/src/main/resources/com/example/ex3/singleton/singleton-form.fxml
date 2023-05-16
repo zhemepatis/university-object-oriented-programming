@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="309.0" prefWidth="284.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ex3.controllers.singleton.SingletonForm">
+   <children>
+      <Button layoutX="161.0" layoutY="206.0" mnemonicParsing="false" onAction="#submitData" text="Submit" />
+      <Label layoutX="61.0" layoutY="78.0" text="Mug color" />
+      <TextField fx:id="colorField" layoutX="61.0" layoutY="102.0" />
+      <Label layoutX="62.0" layoutY="138.0" text="Mug print" />
+      <TextField fx:id="printField" layoutX="61.0" layoutY="162.0" />
+   </children>
+</AnchorPane>
