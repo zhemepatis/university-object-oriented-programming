@@ -1,36 +1,32 @@
 package com.example.ex4;
 
-public class Student {
-    private String firstName, secondName;
-    private Integer group;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
-    public Student(String firstName, String secondName, Integer group) {
-        setFirstName(firstName);
-        setSecondName(secondName);
-        setGroup(group);
+public class Student extends Person {
+    private Integer groupId;
+    Map<LocalDate, Boolean> attendance;
+
+    public Student(String firstName, String secondName, Integer groupId) {
+        super(firstName, secondName);
+        setGroupId(groupId);
+        attendance = new HashMap<>();
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setGroupId(Integer group) {
+        this.groupId = group;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setPresence(LocalDate date, boolean presence) {
+        attendance.put(date, presence);
     }
 
-    public void setGroup(Integer group) {
-        this.group = group;
+    public Integer getGroupId() {
+        return groupId;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public Integer getGroup() {
-        return group;
+    public boolean getPresence(LocalDate date) {
+        return attendance.get(date);
     }
 }

@@ -1,10 +1,15 @@
 package com.example.ex4.controllers;
 
 import com.example.ex4.Student;
+import com.example.ex4.groups.Grouper;
+import com.example.ex4.groups.StudentGroup;
 import com.example.ex4.tables.StudentsTableView;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+
+import java.util.List;
 
 public class StudentsList {
     @FXML
@@ -40,4 +45,5 @@ public class StudentsList {
         // REMOVING SELECTION
         studentsTableView.table.getSelectionModel().clearSelection();
     }
+
 }

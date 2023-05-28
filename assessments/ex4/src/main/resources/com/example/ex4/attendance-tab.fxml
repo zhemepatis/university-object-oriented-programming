@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.ex4.controllers.Attendance"
-            prefHeight="200.0" prefWidth="200.0">
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ex4.controllers.Attendance">
         <DatePicker layoutX="300.0" layoutY="14.0" prefWidth="289.0" />
         <TableView prefHeight="368.0" prefWidth="288.0">
             <columns>
@@ -17,4 +15,6 @@
                 <TableColumn prefWidth="75.0" text="C2" />
             </columns>
         </TableView>
+   <ComboBox layoutX="300.0" layoutY="50.0" prefWidth="150.0" />
+   <Button layoutX="496.0" layoutY="50.0" mnemonicParsing="false" text="Add student" />
 </AnchorPane>

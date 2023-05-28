@@ -14,9 +14,11 @@ public class StudentsTableView extends Table<Student> {
     public StudentsTableView(TableView<Student> table) {
         this.table = table;
 
+        // GENERAL SETTINGS
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         table.setEditable(true);
 
+        // MODIFYING COLUMNS
         firstNameCol = new TableColumn<>("First name");
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         firstNameCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -34,11 +36,11 @@ public class StudentsTableView extends Table<Student> {
         });
 
         groupCol = new TableColumn<>("Group");
-        groupCol.setCellValueFactory(new PropertyValueFactory<>("group"));
+        groupCol.setCellValueFactory(new PropertyValueFactory<>("groupId"));
         groupCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         groupCol.setOnEditCommit(e -> {
             Student student = e.getRowValue();
-            student.setGroup(e.getNewValue());
+            student.setGroupId(e.getNewValue());
         });
 
         // ADDING COLUMNS

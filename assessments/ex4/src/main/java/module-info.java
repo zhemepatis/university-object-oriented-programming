@@ -7,4 +7,6 @@ module com.example.ex4 {
     exports com.example.ex4;
     opens com.example.ex4.controllers to javafx.fxml;
     exports com.example.ex4.controllers;
+    exports com.example.ex4.groups;
+    opens com.example.ex4.groups to javafx.fxml;
 }
